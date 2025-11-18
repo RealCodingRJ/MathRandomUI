@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding.subButton.visibility = View.INVISIBLE
         binding.textSubText.visibility = View.VISIBLE
         binding.correctNumBtn2.visibility = View.INVISIBLE
+        binding.backButton.visibility = View.INVISIBLE
 
         binding.textAnswer.width = 500 * 3
         binding.addButton.width = 1200 / 2
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             binding.buttonNone.visibility = View.INVISIBLE
             binding.textAnswer2.visibility = View.VISIBLE
             binding.subButton.visibility = View.VISIBLE
+            binding.backButton.visibility = View.INVISIBLE
 
             binding.addButton.text = "+"
             binding.subButton.text = "-"
@@ -66,6 +68,8 @@ class MainActivity : AppCompatActivity() {
                 binding.textAnswer.visibility = View.VISIBLE
                 binding.subButton.visibility = View.INVISIBLE
                 binding.textSubText.visibility = View.INVISIBLE
+                binding.correctNumBtn2.visibility = View.INVISIBLE
+                binding.backButton.visibility = View.INVISIBLE
 
 
                 binding.correctNumBtn.setOnClickListener {
@@ -90,6 +94,7 @@ class MainActivity : AppCompatActivity() {
                 binding.subButton.visibility = View.INVISIBLE
                 binding.correctNumBtn.visibility = View.INVISIBLE
                 binding.correctNumBtn2.visibility = View.VISIBLE
+                binding.backButton.visibility = View.INVISIBLE
                 val numSub = abs(num1 - num2)
                 binding.textAnswer2.width = 200 * 2
                 binding.correctNumBtn2.width = 400 * 2
@@ -97,10 +102,17 @@ class MainActivity : AppCompatActivity() {
                 binding.correctNumBtn2.setOnClickListener {
 
                     if (binding.textAnswer2.text.toString().toInt() == numSub) {
-                        binding.correctNumBtn2.text = "Correct"
-                    }
-                }
 
+                        binding.correctNumBtn2.text = "Correct"
+                        binding.correctNumBtn2.visibility = View.INVISIBLE
+
+                        binding.backButton.width = 1300 / 2
+                        binding.backButton.visibility = View.VISIBLE
+                        binding.backButton.text = "Go Back"
+                    }
+
+
+                }
 
             }
 
