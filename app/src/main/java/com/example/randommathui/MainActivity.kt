@@ -24,17 +24,35 @@ class MainActivity : AppCompatActivity() {
 
         override fun mathPosAdd(a: Int, b: Int): Int {
 
-            return a + b
+            val answers = listOf(a, b)
+
+            println("A: $a = ${a in answers}")
+            println("B: $b = ${b in answers}")
+
+            return answers.first() + answers.last()
         }
 
         override fun mathPosSub(a: Int, b: Int): Int {
 
-            return abs(a - b)
+            val answers = listOf(a, b)
+
+            println("A: $a = ${a in answers}")
+            println("B: $b = ${b in answers}")
+
+            return answers.first() - answers.last()
+
         }
 
         override fun mathPosMul(a: Int, b: Int): Int {
 
             return a * b
+
+            val answers = listOf(a, b)
+
+            println("A: $a = ${a in answers}")
+            println("B: $b = ${b in answers}")
+
+            return answers.first() * answers.last()
         }
 
         override fun mathPosDiv(a: Int, b: Int): Int {
@@ -43,7 +61,12 @@ class MainActivity : AppCompatActivity() {
                 return 0
             }
 
-            return a / b
+            val answers = listOf(a, b)
+
+            println("A: $a = ${a in answers}")
+            println("B: $b = ${b in answers}")
+
+            return answers.first() / answers.last()
         }
 
     }
