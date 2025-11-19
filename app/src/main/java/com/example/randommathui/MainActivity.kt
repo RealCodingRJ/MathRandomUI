@@ -12,6 +12,22 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+
+    val mathPosAdd = { x: Int, y: Int ->
+        x + y
+    }
+
+    val mathPosSub = { x: Int, y: Int ->
+        x - y
+    }
+
+    val mathPosMul = { x: Int, y: Int ->
+        x * y
+    }
+    val mathPosDiv = { x: Int, y: Int ->
+        x / y
+    }
+
     val num1 = Random.nextInt(1, 12)
     val num2 = Random.nextInt(1, 10)
 
@@ -33,14 +49,14 @@ class MainActivity : AppCompatActivity() {
         binding.correctNumBtn2.visibility = View.INVISIBLE
         binding.backButton.visibility = View.INVISIBLE
 
-        binding.textAnswer.width = 500 * 3
-        binding.addButton.width = 1200 / 2
-        binding.buttonNone.width = 1200 / 2
-        binding.correctNumBtn.width = 1200 / 2
-        binding.addNumbers.textSize = 11f * 2f
+        binding.textAnswer.width = mathPosMul(500, 3)
+        binding.addButton.width = mathPosDiv( 1200, 2)
+        binding.buttonNone.width = mathPosDiv(1200, 2)
+        binding.correctNumBtn.width = mathPosDiv(1200, 2)
+        binding.addNumbers.textSize = mathPosMul(11, 2).toFloat()
         binding.correctNumBtn.text = "Check Answer"
 
-        binding.textAnswer.width = 200 * 2
+        binding.textAnswer.width =  mathPosMul(200, 2)
 
         binding.buttonBtn.setOnClickListener {
 
@@ -53,14 +69,14 @@ class MainActivity : AppCompatActivity() {
 
             binding.addButton.text = "+"
             binding.subButton.text = "-"
-            binding.subButton.width = 1300 / 2
+            binding.subButton.width = mathPosDiv(1300, 2)
 
 
             binding.addButton.setOnClickListener {
 
 
                 binding.addNumbers.text = "$num1  +  $num2"
-                binding.addNumbers.textSize = 40f / 2f
+                binding.addNumbers.textSize = mathPosDiv(40, 2).toFloat()
                 binding.buttonNone.visibility = View.INVISIBLE
 
                 binding.addButton.visibility = View.INVISIBLE
@@ -74,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
                 binding.correctNumBtn.setOnClickListener {
 
-                    val numAdd = num1 + num2
+                    val numAdd = mathPosAdd(num1, num2)
                     if (binding.textAnswer.text.toString().toInt() == numAdd) {
                         binding.correctNumBtn.text = "Correct"
                     }
@@ -87,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
                 binding.correctNumBtn2.text = "-"
                 binding.textSubText.text = "$num1 - $num2"
-                binding.textSubText.textSize = 11f * 2f
+                binding.textSubText.textSize = mathPosMul(11, 2).toFloat()
                 binding.buttonBtn.visibility = View.INVISIBLE
                 binding.textAnswer2.visibility = View.VISIBLE
                 binding.addButton.visibility = View.INVISIBLE
@@ -95,9 +111,9 @@ class MainActivity : AppCompatActivity() {
                 binding.correctNumBtn.visibility = View.INVISIBLE
                 binding.correctNumBtn2.visibility = View.VISIBLE
                 binding.backButton.visibility = View.INVISIBLE
-                val numSub = abs(num1 - num2)
-                binding.textAnswer2.width = 200 * 2
-                binding.correctNumBtn2.width = 400 * 2
+                val numSub = abs(mathPosSub(num1, num2))
+                binding.textAnswer2.width = mathPosMul(200, 2)
+                binding.correctNumBtn2.width = mathPosMul(400, 2)
 
                 binding.correctNumBtn2.setOnClickListener {
 
@@ -106,7 +122,7 @@ class MainActivity : AppCompatActivity() {
                         binding.correctNumBtn2.text = "Correct"
                         binding.correctNumBtn2.visibility = View.INVISIBLE
 
-                        binding.backButton.width = 1300 / 2
+                        binding.backButton.width = mathPosDiv(1300, 2)
                         binding.backButton.visibility = View.VISIBLE
                         binding.backButton.text = "Go Back"
                     }
